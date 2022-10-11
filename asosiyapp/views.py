@@ -1,11 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View
 from .models import *
 
 
 class BolimlarView(View):
     def get(self, request):
-        return render(request, 'bulimlar.html')
+        if request.user.is_authenticated:
+            return render(request, 'bulimlar.html')
+        else:
+            redirect('/')
 
 class MahsulotlarView(View):
     def get(self, request):
@@ -19,10 +22,11 @@ class MahsulotlarView(View):
 class ClientView(View):
     def get(self, request):
         clt ={
-            'clientlar':Sotuvchi.objects.filter(user=request.user)
+            'clientlar':Mijoz.objects.all()
         }
 
         return render(request, 'clients.html', clt)
+
 
 class StatsView(View):
     def get(self, request):

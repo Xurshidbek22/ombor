@@ -4,10 +4,7 @@ from django.views import View
 
 class LoginView(View):
     def get(self, request):
-        if request.user.is_authenticated:
-            return render(request, 'home.html')
-        else:
-            redirect('/')
+        return render(request, 'home.html')
 
     def post(self, request):
         user = authenticate(username=request.POST.get('l'),
