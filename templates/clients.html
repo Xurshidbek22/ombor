@@ -135,6 +135,7 @@
                             <th scope="col" style="text-align: center;">Do'kon nomi</th>
                             <th scope="col" style="text-align: center;">Telefon raqami</th>
                             <th scope="col" style="text-align: center;">Manzili</th>
+                            <th scope="col" style="text-align: center;">Qarz</th>
                             <th scope="col" style="text-align: center;"></th>
                         </tr>
                     </thead>
@@ -146,9 +147,12 @@
                             <td>{{client.nom}}</td>
                             <td>{{client.tel}}</td>
                             <td>{{client.manzil}}</td>
-                            <td><a href="#"><button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button></a></td>
+                            <td>{{client.qarz}}</td>
+                            <td><a href="/bolimlar/client_update/{{client.id}}"><button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button></a></td>
+                            <td><a href="/bolimlar/cl_delete/{{client.id}}/"><button type="submit" class="btn btn-danger" data-toggle="modal">Delete</button></a></td>
                         </tr>
                     {% endfor %}
+
                     </tbody>
                 </table>
             </div>
@@ -166,7 +170,7 @@
           </div>
     
           <!-- Modal body -->
-          <form action="#" id="new-product-form" >
+          <form action="/bolimlar/clientlar/" method="post" id="new-product-form" >{% csrf_token %}
             <div class="modal-body">
               <label for="new-product-name">FIO:</label>
               <input type="text" name="client_name" placeholder="Mijoz to'liq ismi..." id="new-product-name" class="form-control" required>
@@ -179,6 +183,9 @@
               <br>
               <label for="new-product-name">Manzili:</label>
               <input type="text" name="client_address" placeholder="Mijoz manzili..." id="new-product-amount" class="form-control" required>
+              <br>
+               <label for="new-product-name">Qarzi:</label>
+              <input type="text" name="qarzi" placeholder="Mijoz manzili..." id="new-product-qarz" class="form-control" required>
               <br>
             </div>
     

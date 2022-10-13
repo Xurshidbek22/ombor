@@ -9,9 +9,9 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
   <!-- IonIcons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="{% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %]">
   <!-- Theme style -->
   <link rel="stylesheet" href=" {% static 'dist/css/adminlte.min.css' %}">
 
@@ -150,6 +150,7 @@
                             <td>{{mahsulot.narx}}</td>
                             <td>{{mahsulot.miqdor}}</td>
                             <td><a href="#"><button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button></a></td>
+                            <td><a href="/bolimlar/pr_delete/{{mahsulot.id}}"><button type="submit" class="btn btn-danger" data-toggle="modal">Delete</button></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -157,7 +158,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- The Modal -->
     <div class="modal" id="myModal">
       <div class="modal-dialog">
@@ -170,7 +171,7 @@
           </div>
     
           <!-- Modal body -->
-          <form action="#" id="new-product-form" >
+          <form action="{% url 'mahsulotlar' %}" id="new-product-form" method="post">{% csrf_token %}
             <div class="modal-body">
               <label for="new-product-name">Nomi:</label>
               <input type="text" name="pr_name" placeholder="Mahsulot nomi..." id="new-product-name" class="form-control" required>
@@ -183,6 +184,9 @@
               <br>
               <label for="new-product-name">Miqdori:</label>
               <input type="number" name="pr_amount" placeholder="Mahsulot miqdori..." id="new-product-amount" class="form-control" required>
+              <br>
+                <label for="new-product-name">Olchov:</label>
+              <input type="number" name="olchov" placeholder="Mahsulot olchovi..."  class="form-control" required>
               <br>
             </div>
     

@@ -6,7 +6,7 @@ class Mahsulot(models.Model):
     narx = models.PositiveIntegerField()
     miqdor = models.PositiveIntegerField()
     brend = models.CharField(max_length=50)
-    kelgan_sana = models.DateField()
+    kelgan_sana = models.DateField(auto_now_add=True)
     olchov = models.CharField(max_length=255)
     sotuvchi = models.ForeignKey(Sotuvchi, on_delete=models.SET_NULL, null=True)
 

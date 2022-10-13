@@ -6,7 +6,6 @@ class Sotuvchi(models.Model):
     nom = models.CharField(max_length=50)
     manzil = models.CharField(max_length=50)
     tel = models.CharField(max_length=50)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    vazifa = models.CharField(max_length=50, blank=True)
+    user = models.ManyToManyField(User,null=True)
 
     def __str__(self):return self.ism
